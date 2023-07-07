@@ -13,5 +13,4 @@ self.addEventListener("fetch", e => {
             return response || fetch(e.request)
         })
     )
-    console.log("yo")
 })
