@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: circular;
+    font-display: swap;
+    src: url(src/assets/fonts/сircular-font/Circular/CircularStd-Medium.otf);
+  }
+
+*{
+    font-family:circular ;
+}
+
 .active {
-    color:teal;
+    color:turquoise;
+}
+
+.active > div {
+    background-color: #3f3f46;
+}
+
+body {
+    background-color: #18181b;
+    color: whitesmoke;
 }
