@@ -1,6 +1,9 @@
 function Home() {
+
     return(
-        <h1>About</h1>
+        <div className="p-2">
+           <h1>About Page</h1>
+        </div>
     )
 }
 

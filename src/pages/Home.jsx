@@ -10,8 +10,8 @@ function Home() {
     }
 
     return ( !currentUser? 
-        <div className="">
-                <button onClick={() => {login()}} className="hover:bg-zinc-600 p-2 rounded-md text-2xl ">Sign In w Google</button>
+        <div className="h-screen w-screen grid place-content-center">
+                <button onClick={() => {login()}} className="hover:bg-zinc-600 bg-zinc-800 p-2 rounded-md text-2xl border border-zinc-600">Sign In w Google</button>
         </div>
      :  <Navigate replace={true}  to="/account" />  )
 }
