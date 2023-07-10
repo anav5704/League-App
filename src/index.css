@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    .editName {
+        @apply bg-zinc-700 rounded outline-none caret-teal-400 px-1 w-full
+    }
+}
+
 @font-face {
     font-family: circular;
     font-display: swap;

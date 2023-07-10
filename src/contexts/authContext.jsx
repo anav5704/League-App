@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
-import { auth } from "../services/firebase"
+import { auth, db } from "../services/firebase"
 import {  signOut,  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { doc, collection, setDoc, addDoc  } from "firebase/firestore"; 
+
 
 const authContext  = React.createContext()
 
@@ -16,6 +18,9 @@ const [currentUser, setCurrentUser] = useState()
 async function createUser() {
     try{
         const userCredential = await signInWithPopup(auth, provider)
+        const user = userCredential.user
+        const colRef = doc(db, "User", user.uid)
+        await setDoc(colRef, { Name: user.displayName })
         console.log(user)
     }
     catch(err){
