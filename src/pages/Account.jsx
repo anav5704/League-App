@@ -6,6 +6,7 @@ function Account() {
     const imgref = useRef(null)
     const [edit, setEdit] = useState()
     const [img, setImg] = useState()
+    const [newname, setNewname] = useState()
 
     function handleImg(){
         imgref.current.click()
@@ -17,7 +18,7 @@ function Account() {
     }
 
     async function update(){
-        await updateUser(img)
+        await updateUser(img, newname)
         setEdit(false)
 
     }
@@ -39,7 +40,7 @@ function Account() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
                     </svg>
                     }
-                    <input accept="image/*" onChange={(e)=> handleImgChange(e)} type="file" ref={imgref} name="" id="" className="hidden" />    
+                    <input  accept="image/*" onChange={(e)=> handleImgChange(e)} type="file" ref={imgref} name="" id="" className="hidden" />    
                     </div>  
                     :
                     pfp ? <img src={ pfp } alt="" className="rounded-md h-24 aspect-square mr-5" />  : null
@@ -48,7 +49,7 @@ function Account() {
 
                     <div className="w-48">
                         <p className="text-zinc-400 ">Username</p>
-                        { !edit ? <p>{ username } </p> : <input type="text" className="editName"/> }
+                        { !edit ? <p>{ username } </p> : <input onChange={(e) => {setNewname(e.target.value)}} type="text" className="editName"/> }
                         <p className="text-zinc-400">Email</p>
                         <p>{currentUser.email}</p>
                     </div>

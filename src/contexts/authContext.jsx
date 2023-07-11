@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { auth, db } from "../services/firebase"
 import {  signOut,  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
-import { doc, collection, setDoc, addDoc, onSnapshot } from "firebase/firestore"; 
+import { doc, collection, setDoc, addDoc, onSnapshot, updateDoc } from "firebase/firestore"; 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { storage } from "../services/firebase"
 
@@ -52,12 +52,24 @@ async function loginUser( email, password) {
     }
 }
 
-async function updateUser(img){
+async function updateUser(img, newname){
     try{
+        const colRef = doc(db, "User", currentUser.uid)
+        if(newname){
+            await updateDoc(colRef, { Name: newname })
+        }
+        else{
+            console.log("Username feild is empty my guy")
+        }
         const imgRef = ref(storage, `profileImages/${currentUser.uid}` )
-        await uploadBytes(imgRef, img)
-        const pfp = await getDownloadURL(imgRef)
-        setPfp(pfp)
+        if(img){
+            await uploadBytes(imgRef, img)
+            const pfp = await getDownloadURL(imgRef)
+            setPfp(pfp)
+        }
+        else{
+            console.log("No image selected my guy")
+        }
     }
     catch(err){
         console.log(err)
