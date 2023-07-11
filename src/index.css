@@ -11,7 +11,7 @@
 @font-face {
     font-family: circular;
     font-display: swap;
-    src: url(src/assets/fonts/сircular-font/Circular/CircularStd-Bold.otf);
+    src: url(/src/assets/fonts/сircular-font/Circular/CircularStd-Medium.otf);
   }
 
 *{

@@ -1,7 +1,7 @@
 {
     "name": "League of Losers",
     "short_name": "LOL",
-    "start_url": ".",
+    "start_url": "/",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
     "display": "standalone",
