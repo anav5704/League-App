@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { auth, db } from "../services/firebase"
-import {  signOut,  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { doc, collection, setDoc, addDoc  } from "firebase/firestore"; 
+import {  signOut,  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import { doc, collection, setDoc, addDoc, onSnapshot } from "firebase/firestore"; 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { storage } from "../services/firebase"
 
@@ -14,18 +14,38 @@ export function useAuth(){
 
 export function AuthProvider({ children }){
 
-const provider = new GoogleAuthProvider();
 const [currentUser, setCurrentUser] = useState()
 const [pfp, setPfp] = useState()
+const [username, setUsername] = useState()
 
-async function createUser() {
+async function createUser(name, email, password, img) {
     try{
-        const userCredential = await signInWithPopup(auth, provider)
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         sessionStorage.setItem("user", "true")
         const user = userCredential.user
         const colRef = doc(db, "User", user.uid)
-        await setDoc(colRef, { Name: user.displayName })
+        await setDoc(colRef, { 
+            Name: name , 
+            Email: email
+         })
+         const imgRef = ref(storage, `profileImages/${user.uid}` )
+         await uploadBytes(imgRef, img)
+         const pfp = await getDownloadURL(imgRef)
+         setPfp(pfp) 
         console.log(user)
+        console.log("User Created")
+    }
+    catch(err){
+        console.log(err)
+        console.log(name, email, password, img)
+    }
+}
+
+async function loginUser( email, password) {
+    try{
+        await signInWithEmailAndPassword(auth, email, password)
+        sessionStorage.setItem("user", "true")
+        console.log("User Logged In")
     }
     catch(err){
         console.log(err)
@@ -69,13 +89,17 @@ async function logoutUser(){
 
 useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
+        const docRef = doc(db, "User", user.uid)
+        onSnapshot(docRef, (snapshot) => { 
+            setUsername(snapshot.data().Name)
+        })
         setCurrentUser(user)
         getPfp(user)
     })
     return unsubscribe
 }, [])
 
-const value = { currentUser, createUser, logoutUser , updateUser, pfp }
+const value = { currentUser, createUser, logoutUser, loginUser , updateUser, pfp, username }
 
 return (
     <authContext.Provider value={value}>
