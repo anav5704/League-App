@@ -24,8 +24,8 @@ function Sidebar(){
     }
 
     return (
-    currentUser ?  (
-        <nav className="p-2 flex justify-between min-w-fit  flex-col bg-zinc-800 border-r border-zinc-600 h-full">
+    sessionStorage.getItem("user") ?  (
+        <nav className="p-2 flex justify-between min-w-fit  flex-col bg-zinc-800  h-full">
         <div className="flex flex-col">
             <div >
                 <div className="flex p-2 mb-2 items-center">
