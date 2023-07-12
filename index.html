@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/L512.png" />
+    <link rel="icon" type="image/png" href="L512.png" />
     <link rel="manifest" href="manifest.json" />
-    <meta rel="apple-touch-icon" content="/L512.png"/>
+    <meta rel="apple-touch-icon" content="L512.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffffff"/>
     <title>League PWA</title>
@@ -14,7 +14,7 @@
     <script >
         if ("serviceWorker" in navigator){
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register("./serviceWorker.js").then(registration => {
+                navigator.serviceWorker.register("/src/serviceWorker.js").then(registration => {
                     console.log("Service Worker Registered ✅", registration )}
                 ).catch(err => {
                     console.log("Service Worker Registration Failed ❌", err )
@@ -22,6 +22,6 @@
             })
         }
     </script>
-    <script type="module" src="src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
