@@ -1,7 +1,7 @@
 {
-    "name": "League of Losers",
-    "short_name": "LOL",
-    "start_url": "/",
+    "name": "League of Losers HUB",
+    "short_name": "LOL HUB",
+    "start_url": "index.html",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
     "display": "standalone",
