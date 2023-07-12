@@ -11,17 +11,7 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="text/babel">
-    if ("serviceWorker" in navigator){
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register("./serviceWorker.js").then(registration => {
-                console.log("Service Worker Registered ✅", registration )}
-            ).catch(err => {
-                console.log("Service Worker Registration Failed ❌", err )
-            })
-        })
-    }
-    </script>
+    <script  src="/src/register.js"></script>
     <script type="module" src="src/main.jsx"></script>
   </body>
 </html>
