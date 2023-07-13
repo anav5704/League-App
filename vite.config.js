@@ -11,7 +11,7 @@ export default defineConfig({
                 name: "League of Losers HUB",
                 short_name: "LOL HUB",
                 start_url: ".",
-                background_color: "#FF0000",
+                background_color: "#18181B",
                 theme_color: "#27272A",
                 display: "standalone",
                 icons: [
