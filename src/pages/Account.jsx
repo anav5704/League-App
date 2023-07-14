@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import { useAuth } from "../contexts/authContext"
+import Loading from "./Loading"
 
 function Account() {
     const {  currentUser, updateUser, pfp, username} = useAuth()
@@ -24,7 +25,7 @@ function Account() {
     }
 
     return ( 
-    <main className="p-5">
+    <main className="p-5 h-full">
         { localStorage.getItem("user") && currentUser ?
         <>
             <div className="p-3 bg-zinc-800 rounded-md w-fit">
@@ -62,7 +63,7 @@ function Account() {
                 }
             </div>
        </>
-        : <h1>Loading</h1>
+        : < Loading />
         }
     </main> 
     )

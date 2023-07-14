@@ -5,7 +5,7 @@ function Root() {
     return (
     <main className="flex items-start h-screen">
         <Sidebar />
-        <article className="w-full">
+        <article className="w-full h-full">
             <Outlet />
         </article>
       </main>
