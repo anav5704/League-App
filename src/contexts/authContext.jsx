@@ -21,7 +21,7 @@ const [username, setUsername] = useState()
 async function createUser(name, email, password, img) {
     try{
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-        sessionStorage.setItem("user", "true")
+        localStorage.setItem("user", "true")
         const user = userCredential.user
         const colRef = doc(db, "User", user.uid)
         await setDoc(colRef, { 
@@ -44,7 +44,7 @@ async function createUser(name, email, password, img) {
 async function loginUser( email, password) {
     try{
         await signInWithEmailAndPassword(auth, email, password)
-        sessionStorage.setItem("user", "true")
+        localStorage.setItem("user", "true")
         console.log("User Logged In")
     }
     catch(err){
@@ -82,6 +82,7 @@ async function getPfp(user){
         const pfp = await getDownloadURL(imgRef)
         setPfp(pfp)
         console.log(pfp)
+        localStorage.setItem("user", "true")
     }
     catch(err){
         console.log("bozo", err)
@@ -91,7 +92,7 @@ async function getPfp(user){
 async function logoutUser(){
    try{
     await signOut(auth)
-    sessionStorage.removeItem("user")
+    localStorage.removeItem("user")
     console.log("User Singed Out")        
 }
    catch(err){
@@ -107,6 +108,7 @@ useEffect(() => {
         })
         setCurrentUser(user)
         getPfp(user)
+        console.log(user)
     })
     return unsubscribe
 }, [])

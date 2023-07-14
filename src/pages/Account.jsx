@@ -25,7 +25,7 @@ function Account() {
 
     return ( 
     <main className="p-5">
-        { sessionStorage.getItem("user") && currentUser ?
+        { localStorage.getItem("user") && currentUser ?
         <>
             <div className="p-3 bg-zinc-800 rounded-md w-fit">
                 <h1 className="text-2xl leading-none">User Profile</h1>

@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom"
 
 
 function Home() {
-    const { createUser, sigupUser, loginUser } = useAuth()
+    const { createUser, sigupUser, loginUser , currentUser} = useAuth()
     const [signup, setSignup] = useState(" ")
     const [img, setImg] = useState()
     const [name, setName] = useState()
@@ -31,10 +31,9 @@ function Home() {
         setImg(file)
     }
 
-    return ( sessionStorage.getItem("user") ? 
+    return (localStorage.getItem("user") ? 
     <Navigate replace={true}  to="/account" />
     :   
-    
     <div className="w-screen h-screen grid place-content-center">
         { signup ? 
         <div className="bg-zinc-800 p-3 rounded-md   w-72">
