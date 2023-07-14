@@ -109,6 +109,7 @@ useEffect(() => {
         setCurrentUser(user)
         getPfp(user)
         console.log(user)
+        localStorage.setItem("user", "true")
     })
     return unsubscribe
 }, [])
