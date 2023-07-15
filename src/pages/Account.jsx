@@ -50,7 +50,7 @@ function Account() {
 
                     <div className="w-48">
                         <p className="text-zinc-400 ">Username</p>
-                        { !edit ? <p>{ username } </p> : <input onChange={(e) => {setNewname(e.target.value)}} type="text" className="editName"/> }
+                        { !edit ? <p className="">{ username } </p> : <input onChange={(e) => {setNewname(e.target.value)}} type="text" className="editName"/> }
                         <p className="text-zinc-400">Email</p>
                         <p>{currentUser.email}</p>
                     </div>
@@ -69,3 +69,4 @@ function Account() {
     )
 }
 export default Account
+

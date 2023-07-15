@@ -6,6 +6,7 @@ import About from "./pages/About"
 import Account from './pages/Account'
 import API from "./pages/API"
 import Details from "./pages/Details"
+import Events from "./pages/Events"
 import Error from "./pages/Error"
 import NotFound from "./pages/NotFound"
 import Root from "./layout/Root"
@@ -17,7 +18,11 @@ function App() {
             <Route path='/'  element={ <Root/>}>
                 <Route index element={ <Home/> } />
                 <Route path="about" element={ <About/> } />
-                <Route path="account" element={ <Account/> } />
+                <Route path="account" element={ <Account/>} />
+                <Route path="events" >
+                    <Route path="all" element={ <Events/>}  />
+                    <Route path="add" element={ <Account/>} />
+                </Route>
                 <Route path="api" element={ <API/> } loader={apiLoader}/>
                 <Route path="api/:id" element={ <Details/> } loader={ detailsLoader } errorElement={<Error />}/>
                 <Route path="*" element={ <NotFound/>}/>
