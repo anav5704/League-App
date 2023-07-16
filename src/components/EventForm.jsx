@@ -14,7 +14,7 @@ function EventForm(){
             <div onClick={() => setEvent("Movie")} className={` ${event == "Movie" ? "bg-teal-400 text-zinc-800"  : "bg-zinc-800 text-teal-400" } w-full grid place-content-center cursor-pointer h-24 rounded-md hover:bg-teal-400 hover:text-zinc-800`}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-            </svg>
+            </svg>  
             </div>
             <div onClick={() => setEvent("Meet")} className={` ${event == "Meet" ? "bg-teal-400 text-zinc-800"  : "bg-zinc-800 text-teal-400" } w-full grid place-content-center cursor-pointer h-24 rounded-md hover:bg-teal-400 hover:text-zinc-800`}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -23,12 +23,10 @@ function EventForm(){
             </div>
         </div>
         <input  onChange={(e) => {setTitle(e.target.value)}} placeholder="Title" type="text"  className="w-full outline-none p-1 border-b border-zinc-600 bg-zinc-800"/>
-        <input  onChange={(e) => {setVenue(e.target.value)}} placeholder="Venue" type="text"  className="w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>                    
-        <div className="relative w-full text-zinc-400">
-            <input id="custom-date-input" onChange={(e) => {setDateTime(e.target.value)}} placeholder="Time" type="datetime-local" className=" w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>
-            <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 absolute top-1/2  -translate-y-1/2 right-0 pointer-events-none">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <input  onChange={(e) => {setVenue(e.target.value)}} placeholder="Venue" type="text"  className="w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>        
+        <div  className="relative w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800">
+            <input id="custom-date-input" onChange={(e) => {setDateTime(e.target.value)}} placeholder="Time" type="datetime-local" />
+            <span className="absolute top-0 pointer-events-none  w-full cursor-pointer left-0 p-1 text-zinc-400">{dateTtime}</span>
         </div>
         <button  type="submit" className="mt-5 mb-2 rounded-md border border-zinc-600 py-2 px-4 hover:bg-zinc-700">Add Event</button>
     </form>
