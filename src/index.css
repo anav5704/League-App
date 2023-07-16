@@ -99,3 +99,11 @@ body {
 	50%  { transform: rotate(-160deg); }
 	100% { transform: rotate(140deg); }
 }
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    width: 100%;
+}
+
+input[type="datetime-local"]{
+    opacity: 0;
+}
