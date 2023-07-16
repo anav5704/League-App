@@ -36,7 +36,7 @@ function Home() {
     :   
     <div className="w-screen h-screen grid place-content-center">
         { signup ? 
-        <div className="bg-zinc-800 p-3 rounded-md   w-72">
+        <div className="bg-zinc-800 p-3 rounded-md   w-80">
             <h1 className="text-2xl text-center">Sign Up</h1>
             <form  onSubmit={(e) => (sigup(e))} action="" className="flex flex-col items-center">
             <div onClick={() => {handleImg()}} className=" cursor-pointer h-24 w-24 grid place-content-center my-3 mx-auto bg-zinc-700 rounded-md overflow-hidden text-zinc-400">
@@ -51,17 +51,17 @@ function Home() {
             <input  onChange={(e) => {setName(e.target.value)}} placeholder="Username" type="text"  className="w-full outline-none p-1 border-b border-zinc-600 bg-zinc-800"/>
             <input  onChange={(e) => {setEmail(e.target.value)}} placeholder="E-mail" type="email"  className="w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>
             <input onChange={(e) => {setPassword(e.target.value)}} placeholder="New Password" type="password"  className="w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>
-            <button  type="submit" className="mt-5 mb-3 rounded-md border border-zinc-600 py-2 px-4 hover:bg-zinc-700">Create Account</button>
+            <button  type="submit" className="mt-5 mb-2 rounded-md border border-zinc-600 py-2 px-4 hover:bg-zinc-700">Create Account</button>
             <p className="text-zinc-400">Already have an account? <span className="text-teal-400 cursor-pointer" onClick={() => {setSignup(!signup)}} >Log In</span></p>
             </form>
         </div> 
         :
-        <div className="bg-zinc-800 p-3 rounded-md   w-72">
+        <div className="bg-zinc-800 p-3 rounded-md   w-80">
         <h1 className="text-2xl text-center">Log In</h1>
         <form onSubmit={(e) => {login(e)}} action="" className="flex flex-col items-center">
         <input  onChange={(e) => {setEmail(e.target.value)}} placeholder="E-mail" type="email"  className="w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>
         <input onChange={(e) => {setPassword(e.target.value)}} placeholder="New Password" type="password"  className="w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>
-        <button type="submit"className="mt-5 mb-3 rounded-md border border-zinc-600 py-2 px-4 hover:bg-zinc-700">Log In</button>
+        <button type="submit"className="mt-5 mb-2 rounded-md border border-zinc-600 py-2 px-4 hover:bg-zinc-700">Log In</button>
         <p className="text-zinc-400">Don't have an account? <span className="text-teal-400 cursor-pointer" onClick={() => {setSignup(!signup)}} >Sign Up</span></p>
         </form>
     </div>  }
