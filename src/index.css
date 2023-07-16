@@ -101,9 +101,5 @@ body {
 }
 
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-    width: 100%;
-}
-
-input[type="datetime-local"]{
-    opacity: 0;
+   opacity: 0;
 }
