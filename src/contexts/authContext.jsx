@@ -41,6 +41,22 @@ async function createUser(name, email, password, img) {
     }
 }
 
+async function addEvent(event, title, venue, dayTime) {
+    try{
+        const colRef = doc(db, "Events", title)
+        await setDoc(colRef, { 
+            Type: event , 
+            Title: title , 
+            Vanue: venue ,
+            DayTime: new Date(dayTime)
+         })
+        console.log("Event Added")
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
 async function loginUser( email, password) {
     try{
         await signInWithEmailAndPassword(auth, email, password)
@@ -114,7 +130,7 @@ useEffect(() => {
     return unsubscribe
 }, [])
 
-const value = { currentUser, createUser, logoutUser, loginUser , updateUser, pfp, username }
+const value = { currentUser, createUser, logoutUser, loginUser , updateUser, pfp, username, addEvent }
 
 return (
     <authContext.Provider value={value}>

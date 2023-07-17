@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useAuth } from "../contexts/authContext"
 
 function EventForm(){
 
@@ -6,9 +7,16 @@ function EventForm(){
     const [title, setTitle] = useState("")
     const [venue, setVenue] = useState("")
     const [dateTtime, setDateTime] = useState("Date Time")
+    const {addEvent} = useAuth()
+
+    async function add(e){
+        e.preventDefault()
+        await addEvent(event, title, venue, dateTtime)
+        setEvent(""); setTitle(""); setVenue(""); setDateTime("Date Time")
+    }
 
     return (
-    <form  onSubmit={(e) => (sigup(e))} action="" className="p-3 flex flex-col items-center col-span-1 bg-zinc-800 rounded-md overflow-hidden w-80">
+    <form  onSubmit={(e) => (add(e))} action="" className="p-3 flex flex-col items-center col-span-1 bg-zinc-800 rounded-md overflow-hidden w-80">
         <h1 className="text-2xl text-center my-3">Create New Event</h1>
         <div className="flex w-full gap-3 mb-3">
             <div onClick={() => setEvent("Movie")} className={` ${event == "Movie" ? "bg-teal-400 text-zinc-800"  : "bg-zinc-800 text-teal-400" } w-full grid place-content-center cursor-pointer h-24 rounded-md hover:bg-teal-400 hover:text-zinc-800`}>
@@ -22,8 +30,8 @@ function EventForm(){
                 </svg>
             </div>
         </div>
-        <input  onChange={(e) => {setTitle(e.target.value)}} placeholder="Title" type="text"  className="w-full outline-none p-1 border-b border-zinc-600 bg-zinc-800"/>
-        <input  onChange={(e) => {setVenue(e.target.value)}} placeholder="Venue" type="text"  className="w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>        
+        <input  onChange={(e) => {setTitle(e.target.value)}} placeholder="Title" type="text" value={title} className="w-full outline-none p-1 border-b border-zinc-600 bg-zinc-800"/>
+        <input  onChange={(e) => {setVenue(e.target.value)}} placeholder="Venue" type="text"  value={venue} className="w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800"/>        
         <div  className="relative w-full outline-none mt-3 p-1 border-b border-zinc-600 bg-zinc-800">
             <input id="custom-date-input" onChange={(e) => {setDateTime(e.target.value)}} placeholder="Time" type="datetime-local" />
             <span className="absolute top-0 pointer-events-none  w-full cursor-pointer left-0 p-1 text-zinc-400">{dateTtime}</span>
