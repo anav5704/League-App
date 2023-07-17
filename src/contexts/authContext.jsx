@@ -118,15 +118,17 @@ async function logoutUser(){
 }
 
 async function getEvents(){
-   try{
+    try{
         const colRef =  query(collection(db, "Events"),  orderBy("DayTime", "asc"));
         const querySnapshot = await getDocs(colRef);
+        let eventholder = []
         querySnapshot.docs.forEach(event => {
-            events.push(event.data())
+            eventholder.push(event.data())
         })
+        setEvents(eventholder)
    }catch(err){
     console.log("Error in fetching events", err)
-   }
+   }    
 }
 
 useEffect(() => {

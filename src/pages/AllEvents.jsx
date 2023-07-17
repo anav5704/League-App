@@ -11,7 +11,7 @@ function AllEvents() {
         if (eventsFetched.current) return;
         eventsFetched.current = true;
         getEvents()
-    })
+    }, [])
 
     const { events } = useAuth()
 
