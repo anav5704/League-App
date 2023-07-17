@@ -16,6 +16,7 @@
 
 *{
     font-family:circular ;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .active {
