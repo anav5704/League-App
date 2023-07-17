@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Event(){
+function Event({ Event }){
 
     const [details, setDetails] = useState()
 
@@ -45,7 +45,7 @@ function Event(){
             <div className="flex flex-col items-start justify-between gap-2">
 
                <div className="flex justify-between items-center w-full">
-                <h2 className="text-lg">Barbenheimer + Lunch</h2>
+                <h2 className="text-lg">{ Event.Title  }</h2>
                    <div onClick={() => {setDetails(!details)}} className="p-1 rounded-lg hover:bg-zinc-700 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />

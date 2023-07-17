@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { auth, db } from "../services/firebase"
 import {  signOut,  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
-import { doc, collection, setDoc, addDoc, onSnapshot, updateDoc } from "firebase/firestore"; 
+import { doc, collection, setDoc, addDoc, onSnapshot, updateDoc, query, orderBy, snapshotEqual, getDocs } from "firebase/firestore"; 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { storage } from "../services/firebase"
 
@@ -17,6 +17,8 @@ export function AuthProvider({ children }){
 const [currentUser, setCurrentUser] = useState()
 const [pfp, setPfp] = useState()
 const [username, setUsername] = useState()
+const [events, setEvents] = useState([])
+
 
 async function createUser(name, email, password, img) {
     try{
@@ -47,7 +49,7 @@ async function addEvent(event, title, venue, dayTime) {
         await setDoc(colRef, { 
             Type: event , 
             Title: title , 
-            Vanue: venue ,
+            Venue: venue ,
             DayTime: new Date(dayTime)
          })
         console.log("Event Added")
@@ -88,7 +90,7 @@ async function updateUser(img, newname){
         }
     }
     catch(err){
-        console.log(err)
+        console.log("Error in creating user account", err)
     }
 }
 
@@ -101,7 +103,7 @@ async function getPfp(user){
         localStorage.setItem("user", "true")
     }
     catch(err){
-        console.log("bozo", err)
+        console.log("Error in getting user pfp", err)
     }
 }
 
@@ -110,9 +112,20 @@ async function logoutUser(){
     await signOut(auth)
     localStorage.removeItem("user")
     console.log("User Singed Out")        
+}catch(err){
+    console.log("Error in loggin out user", err)
+   }
 }
-   catch(err){
-    console.log(err)
+
+async function getEvents(){
+   try{
+        const colRef =  query(collection(db, "Events"),  orderBy("DayTime", "asc"));
+        const querySnapshot = await getDocs(colRef);
+        querySnapshot.docs.forEach(event => {
+            events.push(event.data())
+        })
+   }catch(err){
+    console.log("Error in fetching events", err)
    }
 }
 
@@ -126,11 +139,15 @@ useEffect(() => {
         getPfp(user)
         console.log(user)
         localStorage.setItem("user", "true")
+
     })
-    return unsubscribe
+    return () => {
+        console.log("Clean-up function");
+        unsubscribe();
+      };
 }, [])
 
-const value = { currentUser, createUser, logoutUser, loginUser , updateUser, pfp, username, addEvent }
+const value = { currentUser, createUser, logoutUser, loginUser , updateUser, pfp, username , events, addEvent , getEvents}
 
 return (
     <authContext.Provider value={value}>
