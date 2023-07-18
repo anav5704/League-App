@@ -47,6 +47,8 @@ async function addEvent(event, title, venue, dayTime) {
     try{
         const colRef = doc(db, "Events", title)
         await setDoc(colRef, { 
+            CreatorName: username , 
+            CreatorUID: currentUser.uid , 
             Type: event , 
             Title: title , 
             Venue: venue ,
@@ -139,6 +141,12 @@ async function deleteEvent(eventTitle){
     }
 }
 
+// Delete Event Listener
+
+onSnapshot(collection(db, "Events"), (snapshot) => { 
+    getEvents()
+})
+
 useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
         const docRef = doc(db, "User", user.uid)
@@ -147,12 +155,13 @@ useEffect(() => {
         })
         setCurrentUser(user)
         getPfp(user)
+        getEvents()
         console.log(user)
         localStorage.setItem("user", "true")
 
     })
     return () => {
-        console.log("Clean-up function");
+        console.log("Clean-up complete");
         unsubscribe();
       };
 }, [])

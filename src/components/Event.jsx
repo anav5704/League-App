@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useAuth } from "../contexts/authContext"
 
 function Event({ Event }){
-    const { deleteEvent } = useAuth()
+    const { deleteEvent, currentUser } = useAuth()
 
     const [details, setDetails] = useState()
     const Day = new Date(Event.DayTime.seconds*1000).toDateString()
@@ -28,7 +28,7 @@ function Event({ Event }){
        { details ?  <div className="top-0 left-0  absolute h-full w-full z-10 bg-zinc-800 p-2">
                     <div className="flex flex-col items-start justify-between gap-2">
                     <div className="flex justify-between items-center w-full">
-                        <h2 className="text-lg">More Details</h2>
+                        <h2 className="text-lg">Created by { Event.CreatorName }</h2>
                         <div onClick={() => {setDetails(!details)}} className="p-1 rounded-lg hover:bg-zinc-700 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -51,7 +51,12 @@ function Event({ Event }){
                     </p>
                 </div>
 
+                { Event.CreatorUID == currentUser.uid ? 
                 <button onClick={() => {del()}} className="delete mt-4 w-full py-1 bg-zinc-700 rounded-md hover:text-rose-400 ">Delete Event</button>
+                :
+                <button disabled className="delete mt-4 w-full py-1 bg-zinc-700 rounded-md hover:text-rose-400 ">You can't delete this</button>
+                }
+                
             </div> : null }
 
             <div className="flex flex-col items-start justify-between gap-2">

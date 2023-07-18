@@ -2,23 +2,14 @@ import Event from "../components/Event"
 import Loading from "./Loading"
 import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/authContext"
-import { useRef , useEffect} from "react"
 
 function AllEvents() {
-    const {getEvents} = useAuth()
-    const eventsFetched = useRef(false);
-
-    useEffect(() => {
-        if (eventsFetched.current) return;
-        eventsFetched.current = true;
-        getEvents()
-    }, [])
 
     const { events } = useAuth()
 
     return(
     <main className="p-5 h-full relative">
-    { events.length !== 0 ? 
+    { events.length ? 
     <>
        <h1 className="text-2xl leading-none mb-5">Upcoming Events</h1>
       <div className=" w-full grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 mb-5">
