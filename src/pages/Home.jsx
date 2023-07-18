@@ -1,6 +1,6 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useAuth } from "../contexts/authContext"
-import { Navigate } from "react-router-dom"
+import { Navigate, useNavigate , useLocation} from "react-router-dom"
 
 
 function Home() {

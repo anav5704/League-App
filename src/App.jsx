@@ -1,6 +1,7 @@
-import { createBrowserRouter, createRoutesFromElements, Route, Router, NavLink, Link, Routes, RouterProvider, Outlet } from 'react-router-dom'
+import { useLocation, useNavigate, createBrowserRouter, createRoutesFromElements, Route, Router, NavLink, Link, Routes, RouterProvider, Outlet } from 'react-router-dom'
 import { apiLoader } from './pages/API'
 import { detailsLoader } from './pages/Details'
+import { useEffect } from 'react'
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Account from './pages/Account'
@@ -13,7 +14,7 @@ import NotFound from "./pages/NotFound"
 import Root from "./layout/Root"
 
 function App() {
-
+    
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path='/'  element={ <Root/>}>

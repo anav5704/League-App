@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { auth, db } from "../services/firebase"
 import {  signOut,  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
-import { doc, collection, setDoc, addDoc, onSnapshot, updateDoc, query, orderBy, snapshotEqual, getDocs } from "firebase/firestore"; 
+import { doc, collection, setDoc, addDoc, deleteDoc, onSnapshot, updateDoc, query, orderBy, snapshotEqual, getDocs } from "firebase/firestore"; 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { storage } from "../services/firebase"
 
@@ -131,6 +131,14 @@ async function getEvents(){
    }    
 }
 
+async function deleteEvent(eventTitle){
+    try{
+        await deleteDoc(doc(db, "Events", eventTitle));
+    }catch(err){
+        console.log("Error in deleting the event", err)
+    }
+}
+
 useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
         const docRef = doc(db, "User", user.uid)
@@ -149,7 +157,7 @@ useEffect(() => {
       };
 }, [])
 
-const value = { currentUser, createUser, logoutUser, loginUser , updateUser, pfp, username , events, addEvent , getEvents}
+const value = { currentUser, createUser, logoutUser, loginUser , updateUser, pfp, username , events, addEvent , getEvents, deleteEvent}
 
 return (
     <authContext.Provider value={value}>

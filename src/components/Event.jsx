@@ -1,9 +1,16 @@
 import { useState } from "react"
+import { useAuth } from "../contexts/authContext"
 
 function Event({ Event }){
+    const { deleteEvent } = useAuth()
 
     const [details, setDetails] = useState()
     const Day = new Date(Event.DayTime.seconds*1000).toDateString()
+
+    async function del(){
+        await deleteEvent( Event.Title )
+        console.log("Event Deleted")
+    }
 
     return (
     <div className="col-span-1 bg-zinc-800 rounded-md overflow-hidden ">
@@ -44,7 +51,7 @@ function Event({ Event }){
                     </p>
                 </div>
 
-                <button className="mt-4 w-full py-1 bg-zinc-700 rounded-md hover:text-rose-400 ">Delete Event</button>
+                <button onClick={() => {del()}} className="delete mt-4 w-full py-1 bg-zinc-700 rounded-md hover:text-rose-400 ">Delete Event</button>
             </div> : null }
 
             <div className="flex flex-col items-start justify-between gap-2">
