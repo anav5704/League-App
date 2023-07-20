@@ -32,7 +32,7 @@ function Home() {
    }
 
     return (localStorage.getItem("user") ? 
-    <Navigate replace={true}  to={ localStorage.getItem("lastPage") } />
+    <Navigate replace={true}  to={ localStorage.getItem("lastPage") ? localStorage.getItem("lastPage") : "/account"} />
     :   
     <div className="w-screen h-screen grid place-content-center">
         { signup ? 
