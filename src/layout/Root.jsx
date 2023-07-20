@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import Sidebar from "../components/Sidebar"
-import {   Outlet } from "react-router-dom"
+import {   Outlet, useLocation } from "react-router-dom"
 
 function Root() {
+
+    const location = useLocation();
+    const lastPage = location.pathname
+
+    useEffect(() => {
+        localStorage.setItem('lastPage', lastPage);
+    }, [location])
+
     return (
     <main className="flex flex-col-reverse lg:flex-row items-start h-screen">
         <Sidebar />

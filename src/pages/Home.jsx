@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { useAuth } from "../contexts/authContext"
-import { Navigate, useNavigate , useLocation} from "react-router-dom"
+import { Navigate, useNavigate , useLocation  } from "react-router-dom"
 
 
 function Home() {
@@ -29,10 +29,10 @@ function Home() {
     function handleImgChange(e){
         const file = e.target.files[0]
         setImg(file)
-    }
+   }
 
     return (localStorage.getItem("user") ? 
-    <Navigate replace={true}  to="/account" />
+    <Navigate replace={true}  to={ localStorage.getItem("lastPage") } />
     :   
     <div className="w-screen h-screen grid place-content-center">
         { signup ? 
