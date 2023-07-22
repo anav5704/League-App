@@ -14,11 +14,11 @@ function AllEvents() {
     { events.length ? 
     <>
        <h1 className="text-2xl leading-none mb-5">Upcoming Events</h1>
-      <div className=" w-full grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 mb-5">
+      <div className=" w-full grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
           { upcoming.map(event =>  <Event Event={ event } key={ event.DayTime }/> )}
       </div>
       <h1 className="text-2xl leading-none my-5">Finished Events</h1>
-      <div className=" w-full grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 mb-5">
+      <div className=" w-full grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 ">
           { finished.map(event =>  <Event Event={ event } key={ event.DayTime }/> )}
       </div>
 

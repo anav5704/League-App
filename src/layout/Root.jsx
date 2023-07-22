@@ -12,7 +12,7 @@ function Root() {
     }, [location])
 
     return (
-    <main className="flex flex-col-reverse lg:flex-row items-start h-screen ">
+    <main className="flex flex-col-reverse lg:flex-row items-start h-screen">
         <Sidebar />
         <article className="w-full h-full">
             <Outlet />
