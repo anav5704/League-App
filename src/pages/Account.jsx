@@ -25,7 +25,7 @@ function Account() {
     }
 
     return ( 
-    <main className="p-5 h-full">
+    <main className="p-5  h-screen overflow-y-scroll">
         { localStorage.getItem("user") && currentUser ?
         <>
             <div className="p-3 bg-zinc-800 rounded-md w-fit">
