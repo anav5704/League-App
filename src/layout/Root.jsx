@@ -14,7 +14,7 @@ function Root() {
     return (
     <main className="flex flex-col-reverse lg:flex-row items-start h-screen">
         <Sidebar />
-        <article className="w-full h-90v lg:h-full">
+        <article className="w-full overflow-y-scroll h-fit lg:h-full">
             <Outlet />
         </article>
       </main>

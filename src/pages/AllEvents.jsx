@@ -10,7 +10,7 @@ function AllEvents() {
     const finished = events.filter(event => event.DayTime.seconds*1000 < new Date)
 
     return(
-    <main className="p-5 h-full overflow-y-scroll relative">
+    <main className="p-5 h-full relative">
     { events.length ? 
     <>
        <h1 className="text-2xl leading-none mb-5">Upcoming Events</h1>

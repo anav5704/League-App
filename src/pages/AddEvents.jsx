@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 function AddEvents() {
     return(
         <main className="p-5 h-full relative">
-            <div className=" w-full h-full grid place-content-center">
+            <div className="w-full h-full grid place-content-center">
                 <EventForm />
             </div>
             <Link to="/events/all">
