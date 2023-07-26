@@ -34,7 +34,7 @@ function Sidebar(){
  
     return (
     localStorage.getItem("user") ?  (
-        <nav className="w-full bottom-0 p-2 flex flex-row lg:flex-col min-w-fit lg:justify-between lg:w-fit  bg-zinc-800  h-fit lg:h-full items-center">
+        <nav className="border-t-2 lg:border-t-0 lg:border-r-2 border-zinc-600 w-full bottom-0 p-2 flex flex-row lg:flex-col min-w-fit lg:justify-between lg:w-fit  bg-zinc-800  h-fit lg:h-full items-center">
             <div className="flex flex-row lg:flex-col  justify-evenly w-full">
 
                 <div className="hidden lg:flex p-2 lg:mb-2 items-center justify-evenly">
