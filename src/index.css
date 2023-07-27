@@ -123,5 +123,13 @@ input[type="datetime-local"]{
    display: none;
   }
 
+.prnt:hover .img{
+    opacity: 0.5;
+}
+
+.prnt:hover .dwl{
+    opacity: 1;
+}
+
 
 

@@ -10,6 +10,7 @@ import Details from "./pages/Details"
 import AllEvents from "./pages/AllEvents"
 import AddEvents from "./pages/AddEvents"
 import Quotes from './pages/Quotes'
+import Gallery from './pages/Gallery'
 import Error from "./pages/Error"
 import NotFound from "./pages/NotFound"
 import Root from "./layout/Root"
@@ -23,6 +24,7 @@ function App() {
                 <Route path="about" element={ <About/> } />
                 <Route path="account" element={ <Account/>} />  
                 <Route path="quotes" element={ <Quotes /> }/>
+                <Route path="gallery" element={ <Gallery /> }/>
                 <Route path="events" >
                     <Route path="all" element={ <AllEvents/>}  />
                     <Route path="add" element={ <AddEvents/>} />
