@@ -8,7 +8,8 @@ import Account from './pages/Account'
 import API from "./pages/API"
 import Details from "./pages/Details"
 import AllEvents from "./pages/AllEvents"
-import AddEvents from './pages/AddEvents'
+import AddEvents from "./pages/AddEvents"
+import Quotes from './pages/Quotes'
 import Error from "./pages/Error"
 import NotFound from "./pages/NotFound"
 import Root from "./layout/Root"
@@ -20,7 +21,8 @@ function App() {
             <Route path='/'  element={ <Root/>}>
                 <Route index element={ <Home/> } />
                 <Route path="about" element={ <About/> } />
-                <Route path="account" element={ <Account/>} />
+                <Route path="account" element={ <Account/>} />  
+                <Route path="quotes" element={ <Quotes /> }/>
                 <Route path="events" >
                     <Route path="all" element={ <AllEvents/>}  />
                     <Route path="add" element={ <AddEvents/>} />
